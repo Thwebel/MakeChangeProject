@@ -9,9 +9,9 @@ public class MakeChange {
 
 		double price = 0.0, paid = 0.0, owedBack = 0.0;
 
-		double $twentyD = 0.0, $tenD = 0.0, $fiveD = 0.0, $oneD = 0.0, $quarter = 0.0, $dime = 0.0, $nickle = 0.0,
-				$penny = 0.0
-				;
+		int $twentyD = 0, $tenD = 0, $fiveD = 0, $oneD = 0, $quarter = 0, $dime = 0, $nickle = 0,
+				$penny = 0;
+		
 		boolean hasPaid = false;
 
 		while (!hasPaid) {
@@ -29,54 +29,56 @@ public class MakeChange {
 		owedBack = paid - price;
 
 		if (owedBack == 0) {
-			System.out.println("We're all squared up hommie");
+			System.out.println("Thanks for exact change!");
 		}
 		System.out.printf("I owe you: $%.2f\n", owedBack);
-
-		if (owedBack > 20) {
-			$twentyD = (int) (owedBack / 20.0);
-			owedBack %= 20;
+		owedBack *= 100;
+		owedBack = (int)(owedBack);
+		System.out.println(owedBack);
+		if (owedBack > 2000) {
+			$twentyD = (int) (owedBack / 2000);
+			owedBack %= 2000;
+		}
+		if (owedBack >= 1000) {
+			$tenD = (int) (owedBack / 1000);
+			owedBack %= 1000;
+		}
+		if (owedBack >= 500) {
+			$fiveD = (int) (owedBack / 500);
+			owedBack %= 500;
+		}
+		if (owedBack >= 100) {
+			$oneD = (int) (owedBack / 100);
+			owedBack %= 100;
+		}
+		if (owedBack >= 25) {
+			$quarter = (int) (owedBack / 25);
+			owedBack %= 25;
 		}
 		if (owedBack >= 10) {
-			$tenD = (int) (owedBack / 10.0);
+			$dime = (int) (owedBack / 10);
 			owedBack %= 10;
 		}
 		if (owedBack >= 5) {
-			$fiveD = (int) (owedBack / 5.0);
+			$nickle = (int) (owedBack / 5);
 			owedBack %= 5;
 		}
 		if (owedBack >= 1) {
-			$oneD = (int) (owedBack / 1.0);
+ 			$penny = (int) (owedBack / 1);
 			owedBack %= 1;
 		}
-		if (owedBack >= 0.25) {
-			$quarter = (int) (owedBack / 0.25);
-			owedBack %= 0.25;
-		}
-		if (owedBack >= 0.10) {
-			$dime = (int) (owedBack / 0.10);
-			owedBack %= 0.10;
-		}
-		if (owedBack >= 0.05) {
-			$nickle = (int) (owedBack / 0.05);
-			owedBack %= 0.05;
-		}
-		if (owedBack >= 0.01) {
-			owedBack = owedBack + 0.001;
-			$penny = (int) (owedBack / 0.01);
-			owedBack %= 0.01;
-		}
+//		Easy Check of every vars at end:
 		System.out.println("cost: " + price + ", paid: " + paid);
 		System.out.println("20s: " + $twentyD + ", 10s: " + $tenD + ", 5s: " + $fiveD + ", 1s: " + $oneD
 				+ ",\n quarters: " + $quarter + ", dimes: " + $dime + ", nickles: " + $nickle + ", penny: " + $penny);
 		System.out.println(owedBack);
-
+		kb.close();
 	}
 
 	public static boolean checkPayment(double paid, double price) {
 		boolean hasPaid = false;
 		if (paid < price) {
-			System.out.println("Hey buster, what are you trying to pull here. Enter everything again: ");
+			System.out.printf("Hey buster, what are you trying to pull here. The cost is $%.2f, you only gave me $%.2f.%nEnter everything again %n", price, paid);
 			hasPaid = false;
 		} else {
 			hasPaid = true;
