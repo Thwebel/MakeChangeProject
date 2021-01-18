@@ -109,7 +109,7 @@ public class MakeChange {
 		}
 		if ($quarter > 0) {
 			if ($quarter == 1) {
-				System.out.println($quarter + "  quarter");
+				System.out.println($quarter + " quarter");
 			}else {
 				System.out.println($quarter + " twenty quarters");
 			}
@@ -143,7 +143,7 @@ public class MakeChange {
 	public static boolean checkPayment(double paid, double price) {
 		boolean hasPaid = false;
 		if (paid < price) {
-			System.out.printf("%nHey buster! what are you trying to pull here? %nThe cost is $%.2f, you only gave me $%.2f.%nEnter everything again %n%n", price, paid);
+			System.out.printf("%nHey buster! What are you trying to pull here? %nThe cost is $%.2f, you only gave me $%.2f.%n%nEnter everything again %n", price, paid);
 			hasPaid = false;
 		} else {
 			hasPaid = true;
