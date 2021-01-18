@@ -27,12 +27,13 @@ public class MakeChange {
 		}
 
 		owedBack = (paid - price) + 0.001;
-		System.out.println(owedBack);
+		
+//		System.out.println(owedBack);
 
 		if (owedBack == 0) {
 			System.out.println("Thanks for exact change!");
 		}
-		System.out.printf("I owe you: $%.2f\n", owedBack);
+		System.out.printf("%nI owe you: $%.2f\n", owedBack);
 		
 		
 		owedBack *= 100;
@@ -73,17 +74,76 @@ public class MakeChange {
 			owedBackInt %= 1;
 		}
 //		Easy Check of every vars at end:
-		System.out.println("cost: " + price + ", paid: " + paid);
-		System.out.println("twenties: " + $twentyD + ", tens: " + $tenD + ", fives: " + $fiveD + ", ones: " + $oneD
-				+ ",\nquarters: " + $quarter + ", dimes: " + $dime + ", nickles: " + $nickle + ", penny: " + $penny);
-		System.out.println(owedBackInt);
+//		System.out.println("twenties: " + $twentyD + ", tens: " + $tenD + ", fives: " + $fiveD + ", ones: " + $oneD
+//				+ ",\nquarters: " + $quarter + ", dimes: " + $dime + ", nickles: " + $nickle + ", penny: " + $penny);
+//		System.out.println(owedBackInt);
+		System.out.println("cost: " + price + ", paid: " + paid );
+		System.out.println("Results: ");
+		if ($twentyD > 0) {
+			if ($twentyD == 1) {
+				System.out.println($twentyD + " twenty dollar bill");
+			}else {
+				System.out.println($twentyD + " twenty dollar bills");
+			}
+		}
+		if ($tenD > 0) {
+			if ($tenD == 1) {
+				System.out.println($tenD + " ten dollar bill");
+			}else {
+				System.out.println($tenD + " ten dollar bills");
+			}
+		}
+		if ($fiveD > 0) {
+			if ($fiveD == 1) {
+				System.out.println($fiveD + " five dollar bill");
+			}else {
+				System.out.println($fiveD + " five dollar bills");
+			}
+		}
+		if ($oneD > 0) {
+			if ($oneD == 1) {
+				System.out.println($oneD + " one dollar bill");
+			}else {
+				System.out.println($oneD + " one dollar bills");
+			}
+		}
+		if ($quarter > 0) {
+			if ($quarter == 1) {
+				System.out.println($quarter + "  quarter");
+			}else {
+				System.out.println($quarter + " twenty quarters");
+			}
+		}
+		if ($dime > 0) {
+			if ($dime == 1) {
+				System.out.println($dime + " dime");
+			}else {
+				System.out.println($dime + " dimes");
+			}
+		}
+		if ($nickle > 0) {
+			if ($nickle == 1) {
+				System.out.println($nickle + " nickle");
+			}else {
+				System.out.println($nickle + " nickels");
+			}
+		}
+		if ($penny > 0) {
+			if ($penny == 1) {
+				System.out.println($penny + " penny");
+			}else {
+				System.out.println($penny + " pennies");
+			}
+		}
+		
+		
 		kb.close();
 	}
 
 	public static boolean checkPayment(double paid, double price) {
 		boolean hasPaid = false;
 		if (paid < price) {
-			System.out.printf("Hey buster, what are you trying to pull here. The cost is $%.2f, you only gave me $%.2f.%nEnter everything again %n", price, paid);
+			System.out.printf("%nHey buster! what are you trying to pull here? %nThe cost is $%.2f, you only gave me $%.2f.%nEnter everything again %n%n", price, paid);
 			hasPaid = false;
 		} else {
 			hasPaid = true;
